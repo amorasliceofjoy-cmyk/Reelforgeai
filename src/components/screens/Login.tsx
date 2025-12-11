@@ -30,12 +30,12 @@ export default function Login({ onLogged }: { onLogged?: (user:any)=>void }) {
 
   return (
     <div className="max-w-md mx-auto p-6">
-      <h2 className="text-xl font-semibold mb-4">Log in</h2>
+      <h2 className="text-xl font-semibold mb-4">Sign in</h2>
       <form onSubmit={submit} className="space-y-3">
         <input required value={email} onChange={e=>setEmail(e.target.value)} placeholder="Email" className="w-full p-2 border rounded"/>
         <input required value={password} onChange={e=>setPassword(e.target.value)} placeholder="Password" type="password" className="w-full p-2 border rounded"/>
         {error && <div className="text-sm text-red-500">{error}</div>}
-        <button disabled={loading} className="px-4 py-2 bg-blue-600 text-white rounded">{loading? "..." : "Log in"}</button>
+        <button disabled={loading} className="px-4 py-2 bg-blue-600 text-white rounded">{loading ? "..." : "Sign in"}</button>
       </form>
     </div>
   );

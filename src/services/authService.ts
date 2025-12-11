@@ -1,4 +1,4 @@
-// authService.ts
+// src/services/authService.ts
 export const apiBase = "http://localhost:5000";
 
 export function saveAuth(token: string, user: any) {
@@ -16,14 +16,16 @@ export function getAuthToken(): string | null {
 }
 
 export function getCurrentUser(): any | null {
-  const u = localStorage.getItem("rf_user");
-  return u ? JSON.parse(u) : null;
+  try {
+    const u = localStorage.getItem("rf_user");
+    return u ? JSON.parse(u) : null;
+  } catch {
+    return null;
+  }
 }
 
 export async function fetchMe(token: string) {
-  const res = await fetch(`${apiBase}/api/auth/me`, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+  const res = await fetch(`${apiBase}/api/auth/me`, { headers: { Authorization: `Bearer ${token}` } });
   if (!res.ok) throw new Error("Failed to fetch profile");
   return res.json();
 }
